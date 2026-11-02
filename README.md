@@ -52,8 +52,16 @@ npm run firebase:deploy    # publish to your live site
   unit tests and WebKit E2E test, then deploy to a **preview channel** (expires after
   7 days) and comment its URL on the PR.
 
-Both need a repository secret named `FIREBASE_SERVICE_ACCOUNT` (a service-account
-JSON key with deploy rights). The project comes from `.firebaserc`.
+Both need a repository secret named `FIREBASE_SERVICE_ACCOUNT`: the JSON key of a
+service account in the Firebase project with these roles:
+
+- Firebase Hosting Admin
+- Service Usage Consumer (the CLI checks that the Hosting API is enabled)
+- Firebase Authentication Admin (preview channels register their domains)
+- Cloud Run Viewer, API Keys Viewer
+
+Hosting must be enabled once in the Firebase console (Hosting → Get started).
+The project comes from `.firebaserc`.
 
 To run the E2E suite against an already-running server (e.g. the emulator):
 `E2E_BASE_URL=http://localhost:5050 npm run e2e`.
