@@ -44,6 +44,17 @@ npm run firebase:deploy    # publish to your live site
 > pick one, link only to that one, and add a custom domain *before* people
 > start using it — moving later means users start with an empty list.
 
+#### Automatic deploys (GitHub Actions)
+
+- `.github/workflows/firebase-deploy.yml`: on every push to `main`, run the type check
+  and unit tests, then build and deploy to the **live** site.
+- `.github/workflows/firebase-preview.yml`: on every pull request, run the type check,
+  unit tests and WebKit E2E test, then deploy to a **preview channel** (expires after
+  7 days) and comment its URL on the PR.
+
+Both need a repository secret named `FIREBASE_SERVICE_ACCOUNT` (a service-account
+JSON key with deploy rights). The project comes from `.firebaserc`.
+
 To run the E2E suite against an already-running server (e.g. the emulator):
 `E2E_BASE_URL=http://localhost:5050 npm run e2e`.
 
