@@ -1,0 +1,9 @@
+services:
+  raggi:
+    build:
+      context: .
+      target: prod
+    image: raggi:latest
+    ports:
+      - "${RAGGI_BIND:-0.0.0.0}:${RAGGI_PORT:-8080}:80"
+    restart: unless-stopped

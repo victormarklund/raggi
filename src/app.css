@@ -1,0 +1,149 @@
+:root {
+  --bg: #f3eee6;
+  --bg-elevated: #fbf8f3;
+  --card: #fbf8f3;
+  --sand: #e7ded0;
+  --sand-strong: #d9cdb9;
+  --ink: #3a332b;
+  --ink-soft: #5c5247;
+  --muted: #8b8073;
+  --faint: #b5aa9b;
+  --moss: #7c8a68;
+  --moss-soft: #e3e6d8;
+  --clay: #b87a5e;
+  --clay-soft: #f1e1d6;
+  --danger: #b0644f;
+  --shadow-ink: #8b7a66;
+  --scrim: rgba(58, 51, 43, 0.28);
+
+  --shadow-sm: 0 1px 2px rgba(74, 63, 53, 0.06), 0 2px 6px rgba(74, 63, 53, 0.05);
+  --shadow-md: 0 1px 2px rgba(74, 63, 53, 0.05), 0 6px 18px rgba(74, 63, 53, 0.08);
+  --shadow-lg: 0 2px 6px rgba(74, 63, 53, 0.06), 0 18px 48px rgba(74, 63, 53, 0.16);
+
+  --r-sm: 14px;
+  --r-md: 22px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  --font: ui-rounded, 'SF Pro Rounded', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1d1a17;
+    --bg-elevated: #26221e;
+    --card: #2a2622;
+    --sand: #36302a;
+    --sand-strong: #453d35;
+    --ink: #efe8dd;
+    --ink-soft: #d4cabc;
+    --muted: #a0958a;
+    --faint: #6f665c;
+    --moss: #9aa886;
+    --moss-soft: #2f3329;
+    --clay: #cf9478;
+    --clay-soft: #3b2d26;
+    --danger: #d48770;
+    --shadow-ink: #000;
+    --scrim: rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.25), 0 6px 18px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.3), 0 18px 48px rgba(0, 0, 0, 0.45);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+  overflow: hidden;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input,
+textarea {
+  font: inherit;
+  font-size: 17px; /* ≥16px prevents iOS zoom on focus */
+  color: inherit;
+}
+
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 2px;
+}
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

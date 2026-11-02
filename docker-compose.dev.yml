@@ -1,0 +1,13 @@
+services:
+  raggi-dev:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "${RAGGI_DEV_BIND:-0.0.0.0}:${RAGGI_DEV_PORT:-5173}:5173"
+    environment:
+      - CHOKIDAR_USEPOLLING=${CHOKIDAR_USEPOLLING:-true}
+      - RAGGI_DEV_ALLOWED_HOSTS=${RAGGI_DEV_ALLOWED_HOSTS:-}
+    volumes:
+      - .:/app
+      - /app/node_modules
